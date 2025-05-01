@@ -16,12 +16,16 @@ MAX_PER_PAGE = 200
 config.email = CONTACT_EMAIL
 
 
+def _id_from_arxiv_url(url):
+    return re.sub(r".*/", "", url)
+
+
 def _extract_arxiv_source_id(doc):
     oa = doc.get("open_access")
     if oa and oa.get("oa_status") == "green":
         url = oa.get("oa_url")
         if "arxiv.org" in url:
-            return re.sub(r".*/", "", url)
+            return _id_from_arxiv_url(url)
 
     return None
 
@@ -69,24 +73,23 @@ def get_ids_from_arxiv(publication_year, n: int) -> list[str]:
     field_query = "cs.LG"
 
     field_query = "cat:cs.LG"
-    date_filter = f"submittedDate:[{start_str}+TO+{end_str}]"
+    date_filter = f"submittedDate:[{start_str} TO {end_str}]"
+
     query = f"{field_query} AND {date_filter}"
 
     search = arxiv.Search(
-        query=field_query,
+        query=query,
         max_results=n,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
 
-    print(search.query)
-
     client = arxiv.Client()
-    # results = client.results(search)
-    # print(list(results))
+
     ids = []
     for paper in client.results(search):
-        print(paper.published, paper.title)
-    exit()
+        ids.append(_id_from_arxiv_url(paper.entry_id))
+
+    return ids
 
 
 def fetch_arxiv_paper(arxiv_id: str,
