@@ -7,6 +7,7 @@ import arxiv
 import json
 from pyalex import Works, config
 import csv
+from pdfminer.high_level import extract_text
 import datetime
 from datetime import datetime, timezone, timedelta
 
@@ -170,6 +171,35 @@ def command_download_pdfs(args):
     print(f"Saved {len(records)} records to {output_file}")
 
 
+def extract_text_from_pdf(pdf_path: Path) -> str:
+    """Extract text from a PDF file."""
+    try:
+        text = extract_text(str(pdf_path))
+        return "\n".join(line.rstrip() for line in text.splitlines())
+    except Exception as e:
+        print(f"[!] {pdf_path.name}: {type(e).__name__} – skipped ({e})")
+
+    return None
+
+
+def command_extract(args):
+    with open(args.input, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    extracted_records = []
+    for record in records:
+        print("Processing", record["id"])
+        pdf_path = Path(record.get("pdf_path"))
+        text = extract_text_from_pdf(pdf_path)
+        if text is None:
+            continue
+        record["text"] = text
+        extracted_records.append(record)
+
+    with open(args.output, "w", encoding="utf-8") as f:
+        json.dump(extracted_records, f, indent=2)
+
+
 def main():
     parser = argparse.ArgumentParser(description="build arxiv dataset")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -209,6 +239,24 @@ def main():
         help="Directory to save PDFs and metadata."
     )
     parser_download.set_defaults(func=command_download_pdfs)
+
+    parser_extract = subparsers.add_parser(
+        "extract",
+        help="Extract text from paper PDFs"
+    )
+    parser_extract.add_argument(
+        "--input",
+        type=Path,
+        required=True,
+        help="Path to input JSON file."
+    )
+    parser_extract.add_argument(
+        "--output",
+        type=Path,
+        default="./papers-extracted.json",
+        help="Path for the output JSON file."
+    )
+    parser_extract.set_defaults(func=command_extract)
 
     args = parser.parse_args()
     args.func(args)
