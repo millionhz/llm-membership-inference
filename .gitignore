@@ -1,4 +1,6 @@
 *.json
+*.jsonl
 *.pdf
 *.csv
 .DS_Store
+.env
