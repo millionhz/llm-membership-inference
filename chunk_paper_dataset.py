@@ -24,18 +24,6 @@ def split_paper_data(obj, lengths=CONTEXT_LENGTHS):
     return out
 
 
-def transform_file(in_path, out_path):
-    with open(in_path, 'r', encoding='utf-8') as f:
-        papers = json.load(f)
-
-    all_entries = []
-    for paper in papers:
-        all_entries.extend(split_paper_data(paper))
-
-    with open(out_path, 'w', encoding='utf-8') as f:
-        json.dump(all_entries, f, indent=2, ensure_ascii=False)
-
-
 if __name__ == '__main__':
     before = './before/papers-extracted.json'
     after = './after/papers-extracted.json'
