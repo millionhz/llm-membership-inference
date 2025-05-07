@@ -25,14 +25,17 @@ def split_paper_data(obj, lengths=CONTEXT_LENGTHS):
 
 
 if __name__ == '__main__':
-    before = './before/papers-extracted.json'
-    after = './after/papers-extracted.json'
+    before = './dataset/papers/before/papers-extracted.json'
+    after = './dataset/papers/after/papers-extracted.json'
 
     with open(before, 'r', encoding='utf-8') as f:
         before_papers = json.load(f)
 
     with open(after, 'r', encoding='utf-8') as f:
         after_papers = json.load(f)
+
+    before_papers = before_papers[:50]
+    after_papers = after_papers[:50]
 
     chunked_papers = []
     for paper in before_papers:
