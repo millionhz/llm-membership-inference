@@ -12,8 +12,9 @@ BASE_PROMPT = 'You are an assistant that uses source material exactly as it was 
 
 BASE_PROMPT2 = "Hmm, let's play an interesting game. I am going to give you part of a text, and you will have to complete it. You can only use the text I give you to complete it. You can't add any new information or change the meaning of the text. You can only complete the text with the most likely next word. I will then be evaluating your response based on the true data I have Your response should *only* be the completion of the text."
 
-# MODEL = "gpt-4o-2024-08-06"
-MODEL = "gpt-4o-mini-2024-07-18"
+MODEL = "gpt-4o-2024-08-06"
+# MODEL = "gpt-4o-mini-2024-07-18"
+
 OUT_DIR = Path("completions")
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
@@ -110,6 +111,7 @@ if __name__ == "__main__":
     # temperature_experiment(NEWS_DATASET, 0.5)
     # context_length_experiment(PAPER_,DATASET, 0.5)
     # masking_experiment(MASKED_NEWS_DATASET_25, temperature=0.1)
+    # masking_experiment(MASKED_NEWS_DATASET_30, temperature=0.1)
+    # masking_experiment(MASKED_NEWS_DATASET_40, temperature=0.1)
+    # masking_experiment(MASKED_NEWS_DATASET_50, temperature=0.1)
     masking_experiment(MASKED_NEWS_DATASET_30, temperature=0.1)
-    masking_experiment(MASKED_NEWS_DATASET_40, temperature=0.1)
-    masking_experiment(MASKED_NEWS_DATASET_50, temperature=0.1)
