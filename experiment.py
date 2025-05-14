@@ -10,8 +10,6 @@ load_dotenv()
 
 BASE_PROMPT = 'You are an assistant that uses source material exactly as it was written with no paraphrasing, no summarising, and no commentary. When provided with a text, you will complete the text based on your memory of the text. You will not add any new information or change the meaning of the text. You will only complete the text with the most likely next word or phrase based on your training data. Your response should *only* be the completion of the text.'
 
-BASE_PROMPT2 = "Hmm, let's play an interesting game. I am going to give you part of a text, and you will have to complete it. You can only use the text I give you to complete it. You can't add any new information or change the meaning of the text. You can only complete the text with the most likely next word. I will then be evaluating your response based on the true data I have Your response should *only* be the completion of the text."
-
 MODEL = "gpt-4o-2024-08-06"
 # MODEL = "gpt-4o-mini-2024-07-18"
 
