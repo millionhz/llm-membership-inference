@@ -1,0 +1,75 @@
+@inproceedings{neurons_read_your_book,
+author = {Meeus, Matthieu and Jain, Shubham and Rei, Marek and de Montjoye, Yves-Alexandre},
+title = {Did the neurons read your book? document-level membership inference for large language models},
+year = {2024},
+isbn = {978-1-939133-44-1},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {With large language models (LLMs) poised to become embedded in our daily lives, questions are starting to be raised about the data they learned from. These questions range from potential bias or misinformation LLMs could retain from their training data to questions of copyright and fair use of human-generated text. However, while these questions emerge, developers of the recent state-of-the-art LLMs become increasingly reluctant to disclose details on their training corpus. We here introduce the task of document-level membership inference for real-world LLMs, i.e. inferring whether the LLM has seen a given document during training or not. First, we propose a procedure for the development and evaluation of document-level membership inference for LLMs by leveraging commonly used data sources for training and the model release date. We then propose a practical, black-box method to predict document-level membership and instantiate it on OpenLLaMA-7B with both books and academic papers. We show our methodology to perform very well, reaching an AUC of 0.856 for books and 0.678 for papers (Fig. 1). We then show our approach to outperform the sentence-level membership inference attacks used in the privacy literature for the document-level membership task. We further evaluate whether smaller models might be less sensitive to document-level inference and show OpenLLaMA-3B to be approximately as sensitive as OpenLLaMA-7B to our approach. Finally, we consider two mitigation strategies and find the AUC to slowly decrease when only partial documents are considered but to remain fairly high when the model precision is reduced. Taken together, our results show that accurate document-level membership can be inferred for LLMs, increasing the transparency of technology poised to change our lives.},
+booktitle = {Proceedings of the 33rd USENIX Conference on Security Symposium},
+articleno = {133},
+numpages = {17},
+location = {Philadelphia, PA, USA},
+series = {SEC '24}
+}
+
+@inproceedings {extracting_training_data_llm,
+author = {Nicholas Carlini and Florian Tram{\`e}r and Eric Wallace and Matthew Jagielski and Ariel Herbert-Voss and Katherine Lee and Adam Roberts and Tom Brown and Dawn Song and {\'U}lfar Erlingsson and Alina Oprea and Colin Raffel},
+title = {Extracting Training Data from Large Language Models},
+booktitle = {30th USENIX Security Symposium (USENIX Security 21)},
+year = {2021},
+isbn = {978-1-939133-24-3},
+pages = {2633--2650},
+url = {https://www.usenix.org/conference/usenixsecurity21/presentation/carlini-extracting},
+publisher = {USENIX Association},
+month = aug
+}
+
+@inproceedings{stochastic_parrots,
+author = {Bender, Emily M. and Gebru, Timnit and McMillan-Major, Angelina and Shmitchell, Shmargaret},
+title = {On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?},
+year = {2021},
+isbn = {9781450383097},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3442188.3445922},
+doi = {10.1145/3442188.3445922},
+abstract = {The past 3 years of work in NLP have been characterized by the development and deployment of ever larger language models, especially for English. BERT, its variants, GPT-2/3, and others, most recently Switch-C, have pushed the boundaries of the possible both through architectural innovations and through sheer size. Using these pretrained models and the methodology of fine-tuning them for specific tasks, researchers have extended the state of the art on a wide array of tasks as measured by leaderboards on specific benchmarks for English. In this paper, we take a step back and ask: How big is too big? What are the possible risks associated with this technology and what paths are available for mitigating those risks? We provide recommendations including weighing the environmental and financial costs first, investing resources into curating and carefully documenting datasets rather than ingesting everything on the web, carrying out pre-development exercises evaluating how the planned approach fits into research and development goals and supports stakeholder values, and encouraging research directions beyond ever larger language models.},
+booktitle = {Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency},
+pages = {610–623},
+numpages = {14},
+location = {Virtual Event, Canada},
+series = {FAccT '21}
+}
+
+@misc{bloomberg_artist_suit,
+  title        = {AI Art Generators Hit With Copyright Suit Over Artists' Images},
+  year         = {2023},
+  journal      = {Bloomberg Law},
+  author       = {Riddhi Setty},
+  url          = {https://news.bloomberglaw.com/ip-law/ai-art-generators-hit-with-copyright-suit-over-artists-images}
+}
+
+@misc{gpt4_technical_report,
+  title        = {GPT-4 Technical Report},
+  year         = {2023},
+  author       = {OpenAI},
+  url          = {https://cdn.openai.com/papers/gpt-4.pdf}
+}
+
+@misc{arxivScalingMembership,
+  author = {{Haritz Puerto} and {Martin Gubri} and {Sangdoo Yun} and {Seong Joon Oh}},
+  title = {{S}caling {U}p {M}embership {I}nference: {W}hen and {H}ow {A}ttacks {S}ucceed on {L}arge {L}anguage {M}odels --- arxiv.org},
+  howpublished = {\url{https://arxiv.org/abs/2411.00154}},
+  year = {2024},
+  note = {[Accessed 12-05-2025]},
+}
+
+
+@misc{key,
+	author = {Blake Brittain},
+	title = {OpenAI copyright lawsuits from authors, New York Times consolidated in Manhattan},
+	howpublished = {\url{https://www.reuters.com/legal/litigation/openai-copyright-lawsuits-authors-new-york-times-consolidated-manhattan-2025-04-03/}},
+	year = {2025},
+	note = {[Accessed 12-05-2025]},
+}
